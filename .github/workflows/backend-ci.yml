@@ -1,0 +1,38 @@
+name: Backend CI
+
+on:
+    push:
+        branches:[ main ]
+    pull_request:
+        branches:[ main ]
+
+
+jobs:
+    backend-ci:
+        runs-on: ubuntu-latest
+        
+        
+        defaults:
+            run:
+                working-directory: portfolio-backend
+                
+        
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+              
+            
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+                cache: npm
+                cache-dependency-path: portfolio-backend/package-lock.json
+                
+            - name: Install depedencies
+              run: npm ci
+              
+            
+            - name: Start backend (sanity check)
+              run: |
+                timeout 10s npm start || true
