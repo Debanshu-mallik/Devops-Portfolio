@@ -1,0 +1,70 @@
+:root {
+  --bg: #0b0f14;
+  --panel: #121821;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #4f46e5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.hero {
+  padding: 80px 10%;
+  border-bottom: 1px solid var(--border);
+}
+
+.role { color: var(--accent); font-weight: 600; }
+.tagline { color: var(--muted); max-width: 600px; }
+
+.panel {
+  padding: 50px 10%;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform .15s ease;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+}
+
+.badge {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 4px 10px;
+  font-size: .75rem;
+  border-radius: 999px;
+  background: #1f2937;
+}
+
+footer {
+  padding: 32px 10%;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
