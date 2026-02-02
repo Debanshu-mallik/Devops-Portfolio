@@ -68,8 +68,6 @@ NGINX
 
 
 
-
-
 NGINX acts as a reverse proxy and static file server.
 
 The backend exposes internal health and metrics endpoints and integrates with
