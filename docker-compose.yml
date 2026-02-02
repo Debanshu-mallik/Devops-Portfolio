@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./portfolio-backend
+    container_name: portfolio-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./portfolio-backend/.env
+  
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: portfolio-nginx
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
