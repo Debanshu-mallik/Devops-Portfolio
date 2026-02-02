@@ -66,37 +66,6 @@ NGINX
 
 └── Observability + hardening
 
-**Diagram**
-
-┌───────────────┐
-│    Browser    │
-└───────┬───────┘
-        │ HTTP
-        ▼
-┌────────────────────┐
-│        NGINX       │
-│  - Static frontend │
-│  - Reverse proxy   │
-└───────┬────────────┘
-        │ /api/*
-        ▼
-┌────────────────────┐
-│   Node.js Backend  │
-│  - Portfolio API  │
-│  - GitHub metrics │
-│  - Observability  │
-│  - Rate limiting  │
-└───────┬────────────┘
-        │
-        ▼
-┌────────────────────┐
-│    GitHub API      │
-│  - Repo metadata  │
-│  - Activity stats │
-└────────────────────┘
-
-
-
 
 
 NGINX acts as a reverse proxy and static file server.
