@@ -7,18 +7,21 @@ async function loadSystemStatus() {
   const el = document.getElementById("system");
 
   try {
-    const res = await fetch(`${API}/system/health`);
+    const res = await fetch("/api/system/health");
     const data = await res.json();
 
     el.innerHTML = `
-      <strong>Status:</strong> ${data.status}<br/>
-      <strong>Uptime:</strong> ${Math.floor(data.uptimeSeconds)}s<br/>
-      <strong>Time:</strong> ${new Date(data.timestamp).toLocaleString()}
+      <span class="status-dot online"></span>
+      <span>System Online</span>
     `;
   } catch {
-    el.textContent = "Unable to load system status";
+    el.innerHTML = `
+      <span class="status-dot offline"></span>
+      <span>System Offline</span>
+    `;
   }
 }
+
 
 
 /* =========================
