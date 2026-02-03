@@ -28,24 +28,7 @@ async function loadSystemStatus() {
    GITHUB SYNC STATS
 ========================= */
 
-async function loadStats() {
-  try {
-    const res = await fetch(`${API}/system/stats`);
-    const data = await res.json();
 
-    const m = data.metrics;
-    document.getElementById("system").innerHTML += `
-      <hr/>
-      <strong>Requests:</strong> ${m.requests}<br/>
-      <strong>Cache:</strong> ${m.cache.hits} hits / ${m.cache.misses} misses<br/>
-      <strong>Last GitHub Sync:</strong> ${
-        m.lastGithubSync
-          ? new Date(m.lastGithubSync).toLocaleTimeString()
-          : "Never"
-      }
-    `;
-  } catch {}
-}
 
 
 
@@ -126,6 +109,5 @@ document.getElementById("contact").addEventListener("submit", async e => {
    INIT
 ========================= */
 loadSystemStatus();
-loadStats();
 loadProjects();
 
