@@ -3,7 +3,7 @@ import { getCache, setCache } from "../services/cache.service.js";
 import { getStatus } from "../engines/status.engine.js";
 import { getDuration } from "../engines/duration.engine.js";
 import { getHealth } from "../engines/health.engine.js";
-import { CACHE_TTL } from "../config/env.js";
+import config from "../config/index.js";
 import {
   recordCacheHit,
   recordCacheMiss,
@@ -57,6 +57,6 @@ export async function getPortfolio(req, res) {
     projects
   };
 
-  setCache(payload, CACHE_TTL);
+  setCache(payload, config.cache.ttl);
   res.json(payload);
 }

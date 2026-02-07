@@ -1,11 +1,13 @@
+import "./config/env.js";                   // 1️⃣ validate env (fail fast)
+import config from "./config/index.js";     // 2️⃣ read structured config
 import app from "./app.js";
-import {PORT} from "./config/env.js";
 
-app.listen(PORT , () => {
-    console.log(JSON.stringify({
-        logType: "SYSTEM",
-        message: "Portfolio backend Started",
-        port: PORT,
-        timestamp: new Date().toISOString()
-    }));
+app.listen(config.port, () => {
+  console.log(JSON.stringify({
+    logType: "SYSTEM",
+    message: "Portfolio backend started",
+    port: config.port,
+    env: config.env,
+    timestamp: new Date().toISOString()
+  }));
 });

@@ -1,15 +1,19 @@
 import axios from "axios";
-import { GITHUB_USERNAME, GITHUB_TOKEN } from "../config/env.js";
+import config from "../config/index.js";
 
 const client = axios.create({
   baseURL: "https://api.github.com",
   headers: {
-    Authorization: GITHUB_TOKEN ? `Bearer ${GITHUB_TOKEN}` : undefined,
-    Accept: "application/vnd.github+json"
-  }
+    ...(config.github.token && {
+      Authorization: `Bearer ${config.github.token}`,
+    }),
+    Accept: "application/vnd.github+json",
+  },
 });
 
 export async function fetchRepos() {
-  const res = await client.get(`/users/${GITHUB_USERNAME}/repos?per_page=100`);
+  const res = await client.get(
+    `/users/${config.github.username}/repos?per_page=100`
+  );
   return res.data;
 }
