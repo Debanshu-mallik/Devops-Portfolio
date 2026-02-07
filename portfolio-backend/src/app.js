@@ -4,6 +4,7 @@ import portfolioRoutes from "./routes/portfolio.route.js";
 import intentRoutes from "./routes/intent.route.js";
 import contactRoutes from "./routes/contact.route.js";
 import systemRoutes from "./routes/system.route.js";
+import requestId from "./middleware/requestId.js";
 
 const app = express();
 
@@ -11,6 +12,7 @@ const app = express();
 
 
 app.use(express.json());
+app.use(requestId);
 
 
 
